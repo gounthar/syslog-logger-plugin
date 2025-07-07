@@ -35,7 +35,7 @@ import hudson.Extension;
 import hudson.util.ListBoxModel;
 import jenkins.model.GlobalConfiguration;
 import net.sf.json.JSONObject;
-import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerRequest2;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -113,7 +113,7 @@ public class SyslogLoggerPlugin extends GlobalConfiguration {
     }
 
     @Override
-    public boolean configure(StaplerRequest req, JSONObject formData) throws FormException {
+    public boolean configure(StaplerRequest2 req, JSONObject formData) throws FormException {
         syslogTransport = defaultValue(SyslogTransport.valueOf(formData.getString("syslogTransport")), SyslogTransport.UDP);
         syslogServerHostname = trimToNull(formData.optString("syslogServerHostname"));
         syslogServerPort = defaultValue(formData.optInt("syslogServerPort"), DEFAULT_SYSLOG_SERVER_PORT);
